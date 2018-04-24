@@ -62,14 +62,17 @@ function create ()
 
     this.input.keyboard.on('keydown_P', function (event) {
 
-        if (sprite.anims.paused())
-        {
-            sprite.anims.resume();
+        console.log(sprite.anims);
+	//* 
+	if (sprite.anims.isPaused)
+        {// sprite.anims.paused() doesn't return a boolean
+            sprite.anims.resume(sprite.anims.currentFrame);
+	    console.log("inside the if statement");
         }
         else
         {
             sprite.anims.pause();
-        }
+        }//*/
 
     });
 
@@ -92,7 +95,7 @@ function update ()
     updateFrameView();
 
     var debug = [
-        'Progress: ' + sprite.anims.progress() + '%',
+        'Progress: ' + sprite.anims.progress + '%',
         'Accumulator: ' + sprite.anims.accumulator,
         'NextTick: ' + sprite.anims.nextTick
     ];
